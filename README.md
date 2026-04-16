@@ -17,7 +17,7 @@ Every agent execution is preceded by a USDC payment through Circle Nanopayments,
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
 | **Backend** | Python 3.14 + FastAPI | RESTful API with async support |
-| **Frontend** | Next.js 14 + TypeScript | Real-time dashboard with SSE |
+| **Frontend** | Vite + React + TypeScript | Real-time dashboard with SSE |
 | **Styling** | Tailwind CSS | Dark theme UI with payment accent colors |
 | **Blockchain** | Arc Testnet | Circle's gas-optimized testnet |
 | **Payments** | Circle Nanopayments | Gas-free off-chain USDC transfers |
@@ -40,7 +40,7 @@ Every agent execution is preceded by a USDC payment through Circle Nanopayments,
 pip install -r requirements.txt
 
 # Install frontend dependencies
-cd frontend
+cd frontend_vite
 npm install
 cd ..
 
@@ -78,12 +78,12 @@ chmod +x start.sh
 python run.py
 
 # Terminal 2: Frontend
-cd frontend && npm run dev
+cd frontend_vite && npm run dev
 ```
 
 ### 4. Access the Application
 
-- **Frontend**: http://localhost:3000
+- **Frontend**: http://localhost:5173
 - **Backend API**: http://localhost:8000
 - **API Documentation**: http://localhost:8000/docs
 
@@ -103,19 +103,19 @@ cd frontend && npm run dev
 
 ## 🎯 Demo Walkthrough
 
-1. **Navigate to Dashboard** (http://localhost:3000)
+1. **Navigate to Dashboard** (http://localhost:5173)
    - View live metrics and agent status
    - Submit a query: "best mechanical keyboard under $100"
    - Watch 3 payments fire in sequence
    - See transaction feed update in real-time
 
-2. **Run Hackathon Demo** (http://localhost:3000/demo)
+2. **Run Hackathon Demo** (http://localhost:5173/demo)
    - Click "Fire 25-Query Batch"
    - Watch progress bar fill to 75/75 transactions
    - View summary: $0.150 USDC total cost
    - Compare to traditional: $37.50 (99.6% savings!)
 
-3. **Export Transactions** (http://localhost:3000/transactions)
+3. **Export Transactions** (http://localhost:5173/transactions)
    - View complete transaction history
    - Click "Export CSV" for judge review
    - Verify chain: "nanopayments/arc"
@@ -168,12 +168,11 @@ agentpay_mesh/
 │   └── x402_client.py
 ├── api/                 # FastAPI endpoints
 │   └── main.py
-├── frontend/            # Next.js dashboard
-│   ├── app/
-│   │   ├── page.tsx          # Dashboard
-│   │   ├── transactions/     # Transaction history
-│   │   └── demo/             # Batch demo
-│   └── .env.local
+├── frontend_vite/       # Vite + React dashboard
+│   ├── src/
+│   │   ├── pages/            # Dashboard, transactions, demo
+│   │   └── components/       # Shared UI components
+│   └── .env
 ├── scripts/             # Utility scripts
 │   └── seed_demo.py
 ├── coordinator.py       # Agent orchestration
@@ -277,7 +276,7 @@ lsof -ti:8000 | xargs kill -9
 ```
 
 **Frontend can't reach backend:**
-- Ensure `NEXT_PUBLIC_API_URL=http://localhost:8000` in `frontend/.env.local`
+- Ensure `VITE_API_URL=http://localhost:8000` in `frontend_vite/.env`
 - Check CORS settings in `api/main.py`
 
 **Payments stuck in mock mode:**
