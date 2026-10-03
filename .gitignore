@@ -68,6 +68,7 @@ htmlcov/
 *.bak
 
 # Virtual environments
+.venv/
 venv/
 env/
 ENV/

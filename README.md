@@ -1,4 +1,15 @@
-# AgentPay Mesh
+<div align="center">
+
+# 💸 AgentPay Mesh
+
+**A multi-agent orchestration system where AI agents autonomously pay each other in USDC via Circle Nanopayments on the Arc blockchain.**
+
+[![Python](https://img.shields.io/badge/Python-3.14-blue?logo=python&logoColor=white)](https://www.python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
+</div>
 
 A multi-agent orchestration system where AI agents autonomously pay each other in USDC via Circle Nanopayments on Arc blockchain. Each agent execution triggers a micro-payment, demonstrating gas-free, instant value transfer between autonomous AI agents.
 
@@ -299,4 +310,3 @@ MIT License - See LICENSE file for details
 ---
 
 **Built for the AgentPay Hackathon** - Demonstrating the future of AI agent economies on blockchain rails.
-# AgenticPay_mesh
